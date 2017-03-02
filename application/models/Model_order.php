@@ -21,6 +21,7 @@ class Model_order extends CI_Model{
                                         date('Y')
                                       )
                                 ),
+            'user_id'      => $this->get_logged_user_id() ,
             'status'    => 'unpaid'
         );
 
@@ -51,7 +52,6 @@ class Model_order extends CI_Model{
         $hasil = $this->db->get('invoices');
 
         if ($hasil->num_rows() > 0) {
-            
             return $hasil;
         } else {
             return array();
@@ -77,6 +77,20 @@ class Model_order extends CI_Model{
             return $hasil->result();
         } else {
             return false;
+        }
+    }
+
+    public function get_logged_user_id()
+    {
+        $hasil = $this->db
+                      ->select('id')
+                      ->where('username', $this->session->userdata('username'))
+                      ->limit(1)
+                      ->get('users');
+        if ($hasil->num_rows() > 0) {
+            return $hasil->row()->id; 
+        } else {
+            return 0;
         }
     }
 

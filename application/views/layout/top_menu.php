@@ -16,6 +16,10 @@
       
       <ul class="nav navbar-nav navbar-right">
           <li><?php echo anchor(base_url(), 'Home') ?></li>
+          <?php if ($this->session->userdata('username')) { ?>
+            <li><?php echo anchor('customer/payment_confirmation', 'Payment Confirmation') ?></li>
+            <li><?php echo anchor('customer/shopping_history', 'History') ?></li>
+          <?php } ?>
         <li>
             <?php
                 $text_cart_url  = '<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>';
