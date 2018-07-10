@@ -1,6 +1,6 @@
 <?php
 
-class Hello extends CI_Controller{
+class Hello extends CI_Controller {
 
 	public function __construct()
 	{

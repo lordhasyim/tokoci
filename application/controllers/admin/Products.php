@@ -7,7 +7,6 @@
  */
 class Products extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -40,7 +39,6 @@ class Products extends CI_Controller
         //$this->form_validation->set_rules('userfile', 'Product Image', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-
             $this->load->view('backend/form_tambah_product');
         } else {
             if ($_FILES['userfile']['name'] != '') {
@@ -111,7 +109,6 @@ class Products extends CI_Controller
                 $this->load->library('upload', $config);
 
                 if (!$this->upload->do_upload()) {
-
                     $data['product'] = $this->Model_products->find($id);
                     $this->load->view('backend/form_edit_product', $data);
                 } else {
